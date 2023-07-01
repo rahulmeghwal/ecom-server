@@ -44,8 +44,7 @@ def getProducts(page_no):
         searchRegex = ".*"
         for search in args['searchString'].split(' '):
             searchRegex = searchRegex + search + ".*"
-
-        searchQuery['body'] = { '$regex' : searchRegex}
+        searchQuery['body'] = { '$regex' : searchRegex, '$options' : 'i'}
     
     if('brand' in args and len(args['brand']) > 0):
         searchQuery['brand'] = { '$in' : args['brand'].split(',')}
